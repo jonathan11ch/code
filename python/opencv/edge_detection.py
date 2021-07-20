@@ -7,13 +7,14 @@ def getContours(img):
     for cnt in contours:
         area = cv2.contourArea(cnt)
         #print(area)
-        if area > 500:
+        if area > 50:
             perimeter = cv2.arcLength(cnt, True)
             #print(perimeter)
             approx = cv2.approxPolyDP(cnt, 0.02*perimeter, True)
-            if len(approx) == 6:
+            print(len(approx))
+            if len(approx) == 12:
                 objectType = "Hex"
-                cv2.drawContours(imgContour, cnt, -1,(0,255,0),3)
+                cv2.drawContours(imgContour, cnt, -1,(0,255,0),6)
                 x,y,w,h = cv2.boundingRect(approx)
                 cv2.rectangle(imgContour, (x,y),(x+w,y+h),(0,0,255),4)
                 cv2.putText(imgContour,objectType,(x+(w//2)-10, y+(h//2 -10)),cv2.FONT_HERSHEY_COMPLEX,0.5,(0,0,0),2)
