@@ -1,0 +1,1 @@
+println("Testing Julia installation")
